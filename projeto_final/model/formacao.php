@@ -78,7 +78,7 @@ class FormacaoAcad{
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "DELETE FROM formacaoacademica WHERE idformacaoacademica = $id";
+        $sql = "DELETE FROM formacaoacademica WHERE idformacaoAcademica = $id";
 
         if($conn->query($sql) === true){
             $conn->close();
@@ -95,7 +95,7 @@ class FormacaoAcad{
         $con = new ConexaoDb();
         $conn = $con->conectar();
         if($conn->connect_error){
-            die("Connectio failed: ".$conn->connect_error);
+            die("Connection failed: ".$conn->connect_error);
         }
 
         $sql = "SELECT * FROM formacaoacademica WHERE idusuario=$idusuario";
