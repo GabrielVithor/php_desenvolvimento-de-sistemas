@@ -100,7 +100,7 @@ class ExperienciaProfisional{
         }
     }
 
-    public function listaInformacoes($idusuario){
+    public function gerarLista($idusuario){
         require_once 'conexaoDB.php';
 
         $con = new ConexaoDb();

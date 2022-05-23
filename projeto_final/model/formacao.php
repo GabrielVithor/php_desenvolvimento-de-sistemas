@@ -57,7 +57,7 @@ class FormacaoAcad{
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "INSERT INTO formacaoAcademica (idusuario,inicio,fim,descricao) VALUES ($this->idusuario,$this->inicio,$this->fim,$this->descricao)";
+        $sql = "INSERT INTO formacaoacademica (idusuario,inicio,fim,descricao) VALUES ($this->idusuario,$this->inicio,$this->fim,$this->descricao)";
 
         if($conn->query($sql) === true){
             $this->id = mysqli_insert_id($conn);
@@ -72,13 +72,13 @@ class FormacaoAcad{
     public function excluirDB(){
         require_once 'conexaoDB.php';
 
-        $con = new ConexaoDb();
+        $con = new conexaoDB();
         $conn = $con->conectar();
         if($conn->connect_error){
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "DELETE FROM formacaoAcademica WHERE idformacaoAcademica = $id";
+        $sql = "DELETE FROM formacaoacademica WHERE idformacaoacademica = $id";
 
         if($conn->query($sql) === true){
             $conn->close();
@@ -98,7 +98,7 @@ class FormacaoAcad{
             die("Connectio failed: ".$conn->connect_error);
         }
 
-        $sql = "SELECT * FROM formacaoAcademica WHERE idusuario=$idusuario";
+        $sql = "SELECT * FROM formacaoacademica WHERE idusuario=$idusuario";
         $re=$conn->query($sql);
         $conn->close();
         return $re;
