@@ -24,6 +24,12 @@
 </head>
 
 <body class="w3-light-grey">
+    <?php
+        include_once "../model/usuario.php";
+        if(!isset($_SESSION)){
+            session_start();
+        }
+    ?>
     <nav class="w3-sidebar w3-bar-block w3-center w3-blue">
         <a href="#main" class="w3-bar-item w3-button w3-block n w3-cell w3-hover-light-grey h3-hover-text-cyan w3-text-light-grey">
             <i class="fa fa-home w3-xlarge"></i>
@@ -62,33 +68,34 @@
     <div class="w3-padding-64 w3-content w3-text-grey" id="dPessoais" style="width:30%;min-width:450px;">
         <h2 class="w3-text-cyan">Dados Pessoais</h2>
 
-        <form action="" method="post" class="w3-container  w3-light-grey w3-text-blue w3-padding">
-            <div class="w3-row w3-section">
+        <form action="../controller/navegacao.php" method="post" class="w3-container  w3-light-grey w3-text-blue w3-padding">
+        <input type="hidden" name="txtID" value="<?php echo unserialize($_SESSION['usuario'])->getID();?>">    
+        <div class="w3-row w3-section">
                 <div class="w3-col" style="width: 11%;"><i class="w3-xxlarge fa fa-user"></i></div>
                 <div class="w3-rest">
-                    <input type="text" name="txtNome" id="" class="w3-input w3-border w3-round-large" placeholder="Nome Completo">
+                    <input type="text" name="txtNome" id="" class="w3-input w3-border w3-round-large" placeholder="Nome Completo" value="<?php echo unserialize($_SESSION['usuario'])->getNome()?>">
+                </div>
+            </div>
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width: 11%;"><i class="w3-xxlarge far fa-calendar-alt"></i></div>
+                <div class="w3-rest">
+                    <input type="date" name="txtDataNascimento" id="" class="w3-input w3-border w3-round-large" placeholder="dd/mm/aaaa" value="<?php echo unserialize($_SESSION['usuario'])->getDataNascimento();?>">
                 </div>
             </div>
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width: 11%;"><i class="w3-xxlarge fa fa-drivers-license"></i></div>
                 <div class="w3-rest">
-                    <input type="text" name="txtCPF" id="" class="w3-input w3-border w3-round-large" placeholder="Login CPF (ex.: 99999999999)">
+                    <input type="text" name="txtCPF" id="" class="w3-input w3-border w3-round-large" placeholder="Login CPF (ex.: 99999999999)"  value="<?php echo unserialize($_SESSION['usuario'])->getCPF()?>">
                 </div>
             </div>
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width: 11%;"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
                 <div class="w3-rest">
-                    <input type="email" name="txtEmail" id="" class="w3-input w3-border w3-round-large" placeholder="Email : example@email.com">
+                    <input type="email" name="txtEmail" id="" class="w3-input w3-border w3-round-large" placeholder="Email : example@email.com" value="<?php echo unserialize($_SESSION['usuario'])->getEmail()?>">
                 </div>
             </div>
             <div class="w3-row w3-section">
-                <div class="w3-col" style="width: 11%;"><i class="w3-xxlarge fa fa-lock"></i></div>
-                <div class="w3-rest">
-                    <input type="password" name="txtSenha" id="" class="w3-input w3-border w3-round-large" placeholder="Senha">
-                </div>
-            </div>
-            <div class="w3-row w3-section">
-                <button name="btnAtualizar" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width:90% ;">Cadastrar</button>
+                <button name="btnAtualizar" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width:90% ;">Atualizar</button>
             </div>
         </form>
     </div>
@@ -154,7 +161,7 @@
                 <?php
                 /*
                 $ePro = new FormacaoAcadController();
-                $results = $ePro->gerarLista(unserialize($_SESSION['Usuario'])->getID());
+                $results = $ePro->gerarLista(unserialize($_SESSION['usuario'])->getID());
                 if ($reulst != null)
                     while ($row = $results->fetch_object()) {
                         echo `<tr>
@@ -239,7 +246,7 @@
                 <?php
                 /*
                 $ePro = new ExperienciaProfisionalController();
-                $results = $ePro->gerarLista(unserialize($_SESSION['Usuario'])->getID());
+                $results = $ePro->gerarLista(unserialize($_SESSION['usuario'])->getID());
                 if ($reulst != null)
                     while ($row = $results->fetch_object()) {
                         echo `<tr>
@@ -324,7 +331,7 @@
                 <?php
                 /*
                 $ePro = new OutraFormacaoController();
-                $results = $ePro->gerarLista(unserialize($_SESSION['Usuario'])->getID());
+                $results = $ePro->gerarLista(unserialize($_SESSION['usuario'])->getID());
                 if ($reulst != null)
                     while ($row = $results->fetch_object()) {
                         echo `<tr>

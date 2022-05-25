@@ -11,23 +11,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ca5c96c2d2.js" crossorigin="anonymous" defer></script>
-    <title>Home</title>
-    <style>
-        .w3-sidebar {
-            width: 120px;
-        }
-
-        * {
-            font-family: "Montserrat", sans-serif;
-        }
-    </style>
+    <title>Cadastro Curriculos</title>
 </head>
-
 <body>
-    <form action="../controller/navegacao.php" method="POST">
-        <button name="btnCadRealizado" class="w3-button w3-block w3-margin w3-blue w3-cell w3-
-roundlarge w3-display-middle" style="width: 90%;max-width:600px;">Cadastro Realizado Com Sucesso!</button>
-    </form>
+<?php
+    include_once 'controller/navegacao.php';   
+?>
 </body>
-
 </html>

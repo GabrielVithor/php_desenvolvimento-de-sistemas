@@ -73,7 +73,7 @@ class Usuario
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "INSERT INTO usuario (nome,cpf,email,senha) VALUES ($this->nome,$this->cpf,$this->email,$this->senha)";
+        $sql = "INSERT INTO usuario (nome,cpf,email,senha) VALUES ('$this->nome','$this->cpf','$this->email','$this->senha')";
 
         if($conn->query($sql) === true){
             $this->id = mysqli_insert_id($conn);
@@ -94,7 +94,7 @@ class Usuario
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "UPDATE usuario SET nome='".$this->nome."',cpf='".$this->cpf."',dataNascimento ='".$this->dataNascimento."',email = '".$this->email."' WHERE idusuario = '".$this->id."'";
+        $sql = "UPDATE usuario SET nome='$this->nome',cpf='$this->cpf',dataNascimento ='$this->dataNascimento',email = '$this->email' WHERE idusuario = '$this->id'";
 
         if($conn->query($sql) === true){
             $conn->close();
@@ -113,7 +113,7 @@ class Usuario
         if($conn->connect_error){
             die("Connection failed ".$conn->connect_error);
         }
-        $sql = "SELECT * FROM usuario WHERE cpf = ".$cpf;
+        $sql = "SELECT * FROM usuario WHERE cpf = '$cpf'";
         $re =  $conn->query(($sql));
         $r = $re->fetch_object();
         if($r != null){
@@ -121,7 +121,7 @@ class Usuario
             $this->nome = $r->nome;
             $this->email = $r->email;
             $this->cpf = $r->cpf;
-            $this->dataNascimento = $r->getDataNascimento;
+            $this->dataNascimento = $r->dataNascimento;
             $this->senha = $r->senha;
             $conn->close();
             return true;
