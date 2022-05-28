@@ -1,6 +1,6 @@
 <?php
 
-class ExperienciaProfisional{
+class ExperienciaProfissional{
 
     private $id;
     private $idusuario;
@@ -42,7 +42,7 @@ class ExperienciaProfisional{
         }
     
         //DESCRICAO
-        public function setEmprese($empresa){
+        public function setEmpresa($empresa){
             $this->empresa = $empresa;
         }
         public function getEmpresa(){
@@ -68,7 +68,7 @@ class ExperienciaProfisional{
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "INSERT INTO experienciaprofissional (idusuario,inicio,fim,empresa,descricao) VALUES ($this->idusuario,$this->inicio,$this->fim,$this->empresa,$this->descricao)";
+        $sql = "INSERT INTO experienciaprofissional (idusuario,inicio,fim,empresa,descricao) VALUES ('$this->idusuario','$this->inicio','$this->fim','$this->empresa','$this->descricao')";
 
         if($conn->query($sql) === true){
             $this->id = mysqli_insert_id($conn);
@@ -80,7 +80,7 @@ class ExperienciaProfisional{
         }
     }
 
-    public function excluirDB(){
+    public function excluirDB($id){
         require_once 'conexaoDB.php';
 
         $con = new ConexaoDb();
@@ -89,7 +89,7 @@ class ExperienciaProfisional{
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "DELETE FROM experienciaprofissional WHERE idexperienciaprofissional = $id";
+        $sql = "DELETE FROM experienciaprofissional WHERE idexperienciaprofissional = '$id'";
 
         if($conn->query($sql) === true){
             $conn->close();
@@ -100,7 +100,7 @@ class ExperienciaProfisional{
         }
     }
 
-    public function gerarLista($idusuario){
+    public function listaExperiencias($idusuario){
         require_once 'conexaoDB.php';
 
         $con = new ConexaoDb();

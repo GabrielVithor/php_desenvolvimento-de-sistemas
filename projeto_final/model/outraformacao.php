@@ -57,7 +57,7 @@ class OutraFormacao{
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "INSERT INTO outraformacao (idusuario,inicio,fim,descricao) VALUES ($this->idusuario,$this->inicio,$this->fim,$this->descricao)";
+        $sql = "INSERT INTO outraformacao (idusuario,inicio,fim,descricao) VALUES ('$this->idusuario','$this->inicio','$this->fim','$this->descricao')";
 
         if($conn->query($sql) === true){
             $this->id = mysqli_insert_id($conn);
@@ -69,7 +69,7 @@ class OutraFormacao{
         }
     }
 
-    public function excluirDB(){
+    public function excluirDB($id){
         require_once 'conexaoDB.php';
 
         $con = new conexaoDB();
@@ -78,7 +78,7 @@ class OutraFormacao{
             die('Connection failed: '.$conn->connect_error);
         }
 
-        $sql = "DELETE FROM outraformacao WHERE idoutraformacao = $id";
+        $sql = "DELETE FROM outraformacao WHERE idoutraformacao = '$id'";
 
         if($conn->query($sql) === true){
             $conn->close();
@@ -89,7 +89,7 @@ class OutraFormacao{
         }
     }
 
-    public function listaInformacoes($idusuario){
+    public function listaFormacoes($idusuario){
         require_once 'conexaoDB.php';
 
         $con = new ConexaoDb();

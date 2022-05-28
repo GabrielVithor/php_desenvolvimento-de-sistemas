@@ -24,7 +24,9 @@
 </head>
 
 <body>
+<form action="../controller/navegacao.php" method="post">
 <button name="btnOperacaoNaoRealizada" class="w3-button w3-block w3-margin w3-blue w3-cell w3-
 roundlarge w3-display-middle" style="width: 90%;max-width:600px;">Operacao Não Realizada!</button>
+</form>
 </body>
 </html>

@@ -24,7 +24,9 @@
 </head>
 
 <body>
-<button name="btnInserir" class="w3-button w3-block w3-margin w3-blue w3-cell w3-
+<form action="../controller/navegacao.php" method="post">
+<button name="btnInfInserir" class="w3-button w3-block w3-margin w3-blue w3-cell w3-
 roundlarge w3-display-middle" style="width: 90%;max-width:600px;">Inclusao Realizada Com Sucesso!</button>
+</form>
 </body>
 </html>

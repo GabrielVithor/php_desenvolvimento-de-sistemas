@@ -24,7 +24,9 @@
 </head>
 
 <body>
-<button name="btnCadNaoRealizado" class="w3-button w3-block w3-margin w3-blue w3-cell w3-
+<form action="../controller/navegacao.php" method="post">
+<button name="btnInfExcluir" class="w3-button w3-block w3-margin w3-blue w3-cell w3-
 roundlarge w3-display-middle" style="width: 90%;max-width:600px;">Exlusão Realizada Com Sucesso!</button>
+</form>
 </body>
 </html>
